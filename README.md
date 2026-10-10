@@ -46,6 +46,8 @@ The test adapter creates a separate schema for each service test. The separate w
 
 ## Repository
 
+For the Vercel adapter, native Neon/Descope configuration, deadline scheduling limits and deployment checks, see [docs/VERCEL.md](docs/VERCEL.md).
+
 - `apps/server`: authenticated REST and MCP adapters over common commands.
 - `apps/worker`: durable deadline/resolution loop.
 - `apps/widget`: React UI, MCP Apps bridge, English/Hebrew shell and mobile layout.

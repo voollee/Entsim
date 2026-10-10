@@ -12,9 +12,18 @@ export interface Database extends SQL {
   transaction<T>(fn: (sql: SQL) => Promise<T>): Promise<T>;
   close(): Promise<void>;
 }
-export async function openDatabase(url?: string): Promise<Database> {
+export async function openDatabase(
+  url?: string,
+  onPool?: (pool: pg.Pool) => void,
+): Promise<Database> {
   if (url) {
-    const pool = new pg.Pool({ connectionString: url, max: 10 });
+    const pool = new pg.Pool({
+      connectionString: url,
+      max: 5,
+      connectionTimeoutMillis: 10000,
+      idleTimeoutMillis: 10000,
+    });
+    onPool?.(pool);
     return {
       query: async <T>(sql: string, params?: unknown[]) => ({
         rows: (await pool.query(sql, params)).rows as T[],
@@ -80,6 +89,8 @@ export async function migrate(db: Database) {
     "utf8",
   );
   await db.transaction(async (sql) => {
+    // Cold starts may migrate concurrently. Serialize DDL across processes.
+    await sql.query("SELECT pg_advisory_xact_lock(6124701)");
     for (const statement of source
       .split(";")
       .map((s) => s.trim())

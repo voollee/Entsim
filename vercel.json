@@ -1,0 +1,26 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/game.ts": {
+      "maxDuration": 60,
+      "includeFiles": "{dist/**,packages/db/migrations/**}",
+      "excludeFiles": "{.env*,.data/**,tests/**,test-results/**,playwright-report/**}"
+    }
+  },
+  "rewrites": [
+    { "source": "/mcp", "destination": "/api/game" },
+    { "source": "/v1/:path*", "destination": "/api/game" },
+    {
+      "source": "/.well-known/oauth-protected-resource",
+      "destination": "/api/game"
+    },
+    { "source": "/dev-config", "destination": "/api/game" },
+    { "source": "/health", "destination": "/api/game" },
+    { "source": "/healthz", "destination": "/api/game" },
+    { "source": "/readyz", "destination": "/api/game" },
+    { "source": "/internal/worker", "destination": "/api/game" }
+  ],
+  "crons": [{ "path": "/internal/worker", "schedule": "0 0 * * *" }]
+}

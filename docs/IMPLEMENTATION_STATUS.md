@@ -65,6 +65,10 @@ This is an implementation candidate in Entsim, not a completed production releas
 - Account deletion retains anonymized numeric campaign history so counterparties' accounting remains valid. Backups require an explicit retention and deletion policy before production.
 - No secrets, source conversation, ChatGPT transcript, real financial data or payment functionality belong in this repository.
 
+## Vercel adapter validation (2026-10-10)
+
+The deployment adapter uses external PostgreSQL, OAuth discovery with issuer/HTTPS checks, a bounded Vercel-attached pool, serialized cold-start migrations, authenticated worker recovery and post-response settlement through `waitUntil`. No economic coefficients or game versions changed. All 29 backend tests passed with PostgreSQL 17 and zero skipped, including an independent-process migration/settlement race; all four Chromium browser checks passed. Build, TypeScript and formatting checks passed. See [VERCEL.md](VERCEL.md) for the Hobby daily-cron timing deviation and actual provider configuration gates. Neon/Descope resources are provisioned, but `lemon:play` and the real ChatGPT OAuth/read/write/widget smoke remain incomplete; this is not a production-ready claim.
+
 ## Playful draft widgets
 
 The planning screen now includes a 12-month journey, role-specific clickable orchard / warehouse / lemonade-stand tiles, synchronized range and numeric controls, capacity progress, weather-adjusted grower output, seller lemon requirements, and a live opening-cash reservation breakdown. English and Hebrew widget copy, RTL, dark mode, keyboard access and reduced motion are supported. These controls edit the local draft only: they never save, commit or advance a round automatically. Server validation remains authoritative, including over-budget rejection. The exact budget module is shared with the engine; financial rules and engine/config versions are unchanged. No synthetic XP, revenue promises or opponent-private data are added.
