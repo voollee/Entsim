@@ -1,0 +1,384 @@
+#lemon-preview {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color-scheme: light dark;
+  --paper: light-dark(#fff, #1a2b20);
+  --line: light-dark(#dde5d9, #344939);
+  --muted: light-dark(#627568, #acbba9);
+  --green: light-dark(#195e3c, #81c79c);
+  --yellow: #f4d34c;
+  color: light-dark(#173c2b, #e5eddf);
+  font-size: 14px;
+}
+#lemon-preview * {
+  box-sizing: border-box;
+}
+#lemon-preview .preview-product {
+  background: light-dark(#f8f9f3, #142019);
+  padding: 24px;
+  border-radius: 18px;
+}
+#lemon-preview header {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#lemon-preview header span {
+  font-size: 12px;
+  color: var(--muted);
+  flex: 1;
+}
+#lemon-preview button {
+  font: inherit;
+  background: var(--paper);
+  color: inherit;
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  border-radius: 10px;
+  min-height: 44px;
+}
+#lemon-preview button[aria-pressed="true"] {
+  background: #f4d34c35;
+}
+#lemon-preview nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+#lemon-preview .preview-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+#lemon-preview .preview-controls {
+  background: var(--paper);
+  border-radius: 16px;
+  padding: 20px;
+}
+#lemon-preview h2 {
+  font-size: 20px;
+  margin: 0 0 20px;
+}
+#lemon-preview .preview-field {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin: 20px 0;
+  font-size: 13px;
+}
+#lemon-preview input[type="range"] {
+  grid-column: 1/-1;
+  width: 100%;
+  accent-color: #bd9c13;
+  height: 26px;
+  padding: 0;
+}
+#lemon-preview output {
+  font-variant-numeric: tabular-nums;
+  direction: ltr;
+}
+#lemon-preview .preview-equipment {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-height: 44px;
+  font-size: 13px;
+}
+#lemon-preview .hint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+#lemon-preview :focus-visible {
+  outline: 3px solid #ba9700;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  #lemon-preview .preview-product {
+    padding: 14px;
+  }
+  #lemon-preview .preview-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+#lemon-preview .season-trail {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  gap: 5px;
+  margin: 0 0 24px;
+  text-align: center;
+}
+#lemon-preview .season-trail li span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+}
+#lemon-preview .season-trail small {
+  display: block;
+  font-size: 9px;
+  margin-top: 7px;
+  color: var(--muted);
+}
+#lemon-preview .season-trail .current span {
+  background: var(--yellow);
+  color: #173c2b;
+  border: 2px solid #aa8500;
+  box-shadow: 0 0 0 4px #f4d34c30;
+}
+#lemon-preview .season-trail .finished span {
+  background: var(--green);
+  color: var(--paper);
+}
+#lemon-preview .business-playground {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  background: linear-gradient(150deg, #f4d34c20, #81c79c20);
+  margin-bottom: 20px;
+}
+#lemon-preview .play-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+#lemon-preview .draft-tag {
+  font-size: 10px;
+  letter-spacing: 1px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 5px 9px;
+  background: var(--paper);
+}
+#lemon-preview .business-tiles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 7px;
+}
+#lemon-preview .business-tiles button {
+  padding: 10px 2px;
+  background: var(--paper);
+  border: 1px dashed var(--line);
+  color: var(--muted);
+  transition:
+    transform 0.15s,
+    border-color 0.15s;
+}
+#lemon-preview .business-tiles button.active {
+  background: #f4d34c35;
+  border: 1px solid #b79919;
+  color: inherit;
+}
+#lemon-preview .business-tiles button:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+#lemon-preview .business-tiles button span {
+  display: block;
+  font-size: 27px;
+  filter: grayscale(1);
+  opacity: 0.5;
+}
+#lemon-preview .business-tiles button.active span {
+  filter: none;
+  opacity: 1;
+}
+#lemon-preview .business-tiles small {
+  font-size: 10px;
+}
+#lemon-preview .volume-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 9px;
+  font-size: 12px;
+}
+#lemon-preview .volume-summary span {
+  color: var(--muted);
+}
+#lemon-preview progress {
+  width: 100%;
+  height: 10px;
+  accent-color: var(--green);
+}
+#lemon-preview .decision-control input[type="range"] {
+  padding: 0;
+  border: 0;
+  accent-color: #bd9c13;
+  height: 24px;
+  cursor: pointer;
+}
+#lemon-preview .range-endpoints {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--muted);
+  direction: ltr;
+}
+#lemon-preview .cash-widget {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  margin-top: 18px;
+  background: var(--paper);
+}
+#lemon-preview .cash-bar {
+  display: flex;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 17px 0;
+  background: var(--line);
+  gap: 2px;
+}
+#lemon-preview .cash-segment {
+  min-width: 2px;
+  background: #3a8056;
+}
+#lemon-preview .segment-1 {
+  background: #dfb728;
+}
+#lemon-preview .segment-2 {
+  background: #729dc3;
+}
+#lemon-preview .segment-3 {
+  background: #b78bb8;
+}
+#lemon-preview .segment-4 {
+  background: #de9674;
+}
+#lemon-preview .cash-free {
+  background: #81c79c30;
+}
+#lemon-preview .budget-items {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9px;
+  font-size: 12px;
+  margin: 0;
+}
+#lemon-preview .budget-items dd {
+  margin: 0;
+  direction: ltr;
+  font-variant-numeric: tabular-nums;
+}
+#lemon-preview .cash-left {
+  border-top: 1px solid var(--line);
+  margin-top: 15px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+#lemon-preview .cash-left strong {
+  white-space: nowrap;
+  direction: ltr;
+}
+#lemon-preview .over-budget {
+  border-color: #b84323;
+}
+#lemon-preview .over-budget .cash-left {
+  color: #b84323;
+}
+@media (max-width: 700px) {
+  #lemon-preview .season-trail {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    row-gap: 12px;
+  }
+  #lemon-preview .business-playground,
+  #lemon-preview .cash-widget {
+    padding: 13px;
+  }
+  #lemon-preview .cash-left {
+    flex-wrap: wrap;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  #lemon-preview .over-budget .cash-left {
+    color: #ffb09b;
+  }
+}
+#lemon-preview .business-tiles .business-icon {
+  position: relative;
+  display: block;
+  width: 36px;
+  height: 42px;
+  margin: 0 auto 6px;
+}
+#lemon-preview .business-icon::before,
+#lemon-preview .business-icon::after {
+  content: "";
+  position: absolute;
+  display: block;
+}
+#lemon-preview .business-icon.grower::before {
+  inset: 0 0 10px;
+  border-radius: 48%;
+  background:
+    radial-gradient(circle at 25% 40%, #f4d34c 0 3px, transparent 4px),
+    radial-gradient(circle at 70% 30%, #f4d34c 0 3px, transparent 4px),
+    radial-gradient(circle at 55% 72%, #f4d34c 0 3px, transparent 4px), #578c48;
+  z-index: 1;
+}
+#lemon-preview .business-icon.grower::after {
+  width: 6px;
+  height: 19px;
+  background: #8e653a;
+  bottom: 0;
+  left: 15px;
+}
+#lemon-preview .business-icon.distributor::before {
+  inset: 7px 1px 3px;
+  background:
+    linear-gradient(90deg, transparent 43%, #f5df9a 44% 56%, transparent 57%),
+    #bf884a;
+  border-radius: 3px;
+  box-shadow: inset 0 -5px #986637;
+}
+#lemon-preview .business-icon.distributor::after {
+  width: 12px;
+  height: 3px;
+  background: #6c4929;
+  left: 5px;
+  bottom: 9px;
+}
+#lemon-preview .business-icon.seller::before {
+  inset: 12px 4px 1px;
+  background: linear-gradient(#ffefb5 20%, #f4d34c 20%);
+  clip-path: polygon(0 0, 100% 0, 84% 100%, 16% 100%);
+  border-top: 3px solid #e7bc27;
+}
+#lemon-preview .business-icon.seller::after {
+  width: 4px;
+  height: 23px;
+  background: #50916d;
+  top: 0;
+  left: 21px;
+  transform: rotate(12deg);
+  border-radius: 2px;
+}
+#lemon-preview .coin-icon {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  background: var(--yellow);
+  color: #173c2b;
+  border-radius: 50%;
+  font-size: 10px;
+}
