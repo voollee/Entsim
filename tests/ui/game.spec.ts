@@ -76,9 +76,13 @@ test("playful draft widgets synchronize volume and show exact cash without advan
   await expect(
     page.getByRole("slider", { name: "Planned harvest (kg) slider" }),
   ).toHaveValue("800");
+  // A new campaign draws a public event; INPUT_SHOCK raises variable cost 20%.
+  const inputShock = (await page.locator(".bulletin").innerText()).includes(
+    "variable cost 120%",
+  );
   await expect(
     page.getByRole("region", { name: "Live cash budget" }).getByRole("status"),
-  ).toContainText("8,700 LE");
+  ).toContainText(inputShock ? "8,540 LE" : "8,700 LE");
   await page
     .getByRole("slider", { name: "Planned harvest (kg) slider" })
     .focus();
