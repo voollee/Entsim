@@ -4,3 +4,8 @@ dist/
 .env
 test-results/
 playwright-report/
+.vercel/
+.env.*
+!.env.example
+.agents/
+skills-lock.json
